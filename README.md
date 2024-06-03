@@ -1,27 +1,44 @@
-## BACKGROUND AND PURPOSE
+# Java2XML Application
 
-This demo project is to understand and generate an XML file using JacksonXML. The project structure is generated off Adam Bien's Lightweight Restful Archetype (V 0.0.2). 
+I was initially looking for a way to convert objects to an XML document and after some experimentation, found this to be
+a viable solution.This can be useful for
+various data serialization tasks, data interchange formats, and ensuring data compatibility across different systems.
 
-# STANDARD MAVEN BUILD 
-# BUILD	
-	mvn clean package
+As I haven't looked at the original Java 8 code in years, I decided to migrate the base to Java 21. This of course means
+that quite a number of initial processes had to change. I do feel there are some additional boilerplate introduced,
+however, the project is structured more soundly and makes sense from an API perspective (in my opinion of course).
 
-# RUN FROM YOUR APPLICATION SERVER
-Fire up the war from your Application Server of choice, copy the Java2XML.war over and run url http://localhost:8080/Java2XML/resources/generateDocument from your browser, 
-	
-	
-# OR RUN WITH DOCKER
-# BUILD
-mvn clean package && docker build -t de.tgl/Java2XML .
+## Standard Maven Build
 
-# RUN
-docker rm -f Java2XML || true && docker run -d -p 8080:8080 -p 4848:4848 --name Java2XML de.tgl/Java2XML 
+To build the application, use the following Maven command:
 
+```sh
+mvn clean package
+```
 
-# Word of thanks
-Special thanks to @AdamBien for providing the archetype, as well as the comprehensive writeup from FasterXML's Github repo.
+## Run from Your Application Server
 
-Links:
-Adam's Github Repos:	https://github.com/AdamBien
+1. **Deploy the WAR File:**
+    - Deploy the `Java2XML.war` file to your application server of choice.
+    - This can typically be done by copying the `Java2XML.war` file to the deployment directory of your server.
 
-FASTERXML Github Repo:	https://github.com/FasterXML/jackson-dataformat-xml
+2. **Access the Application:**
+    - Start your application server.
+    - Open your browser and navigate to the following URL to generate the XML document:
+      ```
+      http://localhost:8080/Java2XML/api/document
+      ```
+3. **FilePath**
+    - I've set the path to generate in a temp directory, as opposed to `C:\\` for windows. This allows for an OS
+      friendly
+      approach. The path will be set to your application server's temp directory (the path will be generated in the
+      logs).
+
+**Note:** This application has been tested with Tomcat 10 (version 10.1.24 as of this writing).
+
+## Acknowledgements
+
+Special thanks to:
+
+- **@AdamBien** for providing the original inspiration.
+- The comprehensive writeup from FasterXML's GitHub repository for guidance on XML processing with Jackson.
