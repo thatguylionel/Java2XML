@@ -1,4 +1,4 @@
-package de.tgl.Java2XML.obj;
+package de.tgl.Java2XML.models;
 
 import java.util.List;
 
