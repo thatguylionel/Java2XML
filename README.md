@@ -28,6 +28,11 @@ mvn clean package
       ```
       http://localhost:8080/Java2XML/api/document
       ```
+3. **FilePath**
+    - I've set the path to generate in a temp directory, as opposed to `C:\\` for windows. This allows for an OS
+      friendly
+      approach. The path will be set to your application server's temp directory (the path will be generated in the
+      logs).
 
 **Note:** This application has been tested with Tomcat 10 (version 10.1.24 as of this writing).
 
